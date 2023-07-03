@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.get('/', async function (req, res) {
     let result = '<html><body>'
-    result += '<h1>Game of Thrones Quotes</h1>'
+    result += '<h1>Shaspeakeare Quotes</h1>'
     result += '/query?quote=<br/>'
     result += '/query?character=<br/>'
     result += '</body></html>'
