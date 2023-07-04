@@ -19,7 +19,7 @@ async function run() {
 
   // Let's start by deleting the index if it exists
   await client.indices.delete({
-    index: 'Shakespeare',
+    index: 'game_of_throne',
   }).then(function (resp) {
     console.log("Successfully deleted index!");
   }, function (err) {
