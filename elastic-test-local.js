@@ -42,7 +42,7 @@ async function run() {
       console.log(item);
 
       await client.index({
-        index: 'game-of-thrones',
+        index: 'shakespeare',
         body: {
           character: item.character,
           quote: item.quote
