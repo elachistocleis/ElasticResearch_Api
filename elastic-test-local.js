@@ -44,8 +44,8 @@ async function run() {
       await client.index({
         index: 'shakespeare',
         body: {
-          character: item.character,
-          quote: item.quote
+          character: item.speaker,
+          quote: item.text_entry
         }
       });
     }
