@@ -19,7 +19,7 @@ async function run() {
 
   // Let's start by deleting the index if it exists
   await client.indices.delete({
-    index: 'game_of_throne',
+    index: 'game-of-thrones',
   }).then(function (resp) {
     console.log("Successfully deleted index!");
   }, function (err) {
@@ -42,10 +42,10 @@ async function run() {
       console.log(item);
 
       await client.index({
-        index: 'shakespeare',
+        index: 'game-of-thrones',
         body: {
-          character: item.speaker,
-          quote: item.text_entry
+          character: item.character,
+          quote: item.quote
         }
       });
     }
@@ -55,8 +55,17 @@ async function run() {
 
   // Here we are forcing an index refresh, otherwise we will not
   // get any result in the subsequent search
-  await client.indices.refresh({ index: 'shakespeare' });
+  await client.indices.refresh({ index: 'game-of-thrones' });
 
+  // Let's search!
+  const result = await client.search({
+    index: 'game-of-thrones',
+    body: {
+      query: {
+        match: { quote: 'winter' }
+      }
+    }
+  });
 
   console.log(result.hits.hits);
 }
