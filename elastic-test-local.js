@@ -55,14 +55,14 @@ async function run() {
 
   // Here we are forcing an index refresh, otherwise we will not
   // get any result in the subsequent search
-  await client.indices.refresh({ index: 'game-of-thrones' });
+  await client.indices.refresh({ index: 'shakespeare' });
 
   // Let's search!
   const result = await client.search({
-    index: 'game-of-thrones',
+    index: 'shakespeare',
     body: {
       query: {
-        match: { quote: 'winter' }
+        match: { quote: 'to be' }
       }
     }
   });
