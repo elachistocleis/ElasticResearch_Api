@@ -32,11 +32,14 @@
                             headerRow.append($('<th>').text('Quote'));
                             table.append(headerRow);
 
+                             // Add CSS style to the table
+                           table.css('border-collapse', 'collapse');
+
                             // Create table rows for each result
                             data.forEach(function (result) {
                                 var row = $('<tr>');
-                                row.append($('<td>').text(result.character));
-                                row.append($('<td>').text(result.quote));
+                                row.append($('<td>').text(result.character).css('border', '1px solid black'));
+                                row.append($('<td>').text(result.quote).css('border', '1px solid black'));
                                 table.append(row);
                             });
 
