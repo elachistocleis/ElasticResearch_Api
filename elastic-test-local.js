@@ -27,7 +27,7 @@ async function run() {
   });
 
   // Specify the path to your JSON file
-  const filePath = 'shakespeare_8.0.json';
+  const filePath = 'game-of-thrones-quotes.json';
 
   try {
     // Read the contents of the JSON file
@@ -42,10 +42,10 @@ async function run() {
       console.log(item);
 
       await client.index({
-        index: 'shakespeare',
+        index: 'game-of-thrones',
         body: {
-          character: item.speaker,
-          quote: item.text_entry
+          character: item.character,
+          quote: item.quote
         }
       });
     }
@@ -55,18 +55,14 @@ async function run() {
 
   // Here we are forcing an index refresh, otherwise we will not
   // get any result in the subsequent search
-  await client.indices.refresh({ index: 'shakespeare' });
+  await client.indices.refresh({ index: 'game-of-thrones' });
 
   // Let's search!
   const result = await client.search({
-    index: 'shakespeare',
+    index: 'game-of-thrones',
     body: {
       query: {
-<<<<<<< Updated upstream
-        match: { quote: 'to be' }
-=======
-        match: { quote: 'breathe' }
->>>>>>> Stashed changes
+        match: { quote: 'winter' }
       }
     }
   });
