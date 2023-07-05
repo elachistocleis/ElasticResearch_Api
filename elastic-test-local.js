@@ -27,7 +27,7 @@ async function run() {
   });
 
   // Specify the path to your JSON file
-  const filePath = 'game-of-thrones-quotes.json';
+  const filePath = 'shakespeare_8.0';
 
   try {
     // Read the contents of the JSON file
@@ -42,10 +42,10 @@ async function run() {
       console.log(item);
 
       await client.index({
-        index: 'game-of-thrones',
+        index: 'shakespeare',
         body: {
-          character: item.character,
-          quote: item.quote
+          character: item.speaker,
+          quote: item.text_entry
         }
       });
     }
@@ -59,7 +59,7 @@ async function run() {
 
   // Let's search!
   const result = await client.search({
-    index: 'game-of-thrones',
+    index: 'shakespeare',
     body: {
       query: {
         match: { quote: 'winter' }
