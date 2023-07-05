@@ -44,8 +44,8 @@ async function run() {
       await client.index({
         index: 'shakespeare',
         body: {
-          character: item.character,
-          quote: item.quote
+          character: item.speaker,
+          quote: item.text_entry
         }
       });
     }
@@ -62,7 +62,11 @@ async function run() {
     index: 'shakespeare',
     body: {
       query: {
+<<<<<<< Updated upstream
         match: { quote: 'to be' }
+=======
+        match: { quote: 'breathe' }
+>>>>>>> Stashed changes
       }
     }
   });
