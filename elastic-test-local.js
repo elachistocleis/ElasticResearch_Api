@@ -27,7 +27,7 @@ async function run() {
   });
 
   // Specify the path to your JSON file
-  const filePath = 'shakespeare_8.0';
+  const filePath = 'shakespeare_8.0.json';
 
   try {
     // Read the contents of the JSON file
