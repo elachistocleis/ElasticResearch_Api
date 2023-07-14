@@ -45,7 +45,7 @@ async function run() {
         index: 'google',
         body: {
           title: item.title,
-          author: item.author
+          author: item.author,
           description: item.description
         }
       });
