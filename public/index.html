@@ -31,6 +31,7 @@
                             headerRow.append($('<th>').text('Title'));
                             headerRow.append($('<th>').text('Author'));
                             headerRow.append($('<th>').text('Description'));
+                            headerRow.append($('<th>').text('Publish Year'));
                             table.append(headerRow);
 
                              // Add CSS style to the table
@@ -42,6 +43,7 @@
                                 row.append($('<td>').text(result.title).css('border', '1px solid black'));
                                 row.append($('<td>').text(result.author).css('border', '1px solid black'));
                                 row.append($('<td>').text(result.description).css('border', '1px solid black'));
+                                row.append($('<td>').text(result.published_date).css('border', '1px solid black'));
                                 table.append(row);
                             });
 
