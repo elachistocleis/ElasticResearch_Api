@@ -47,6 +47,7 @@ async function run() {
           title: item.title,
           author: item.author,
           description: item.description,
+          published_date: item.published_date
         }
       });
     }
