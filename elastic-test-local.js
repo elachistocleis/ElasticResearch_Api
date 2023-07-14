@@ -19,7 +19,7 @@ async function run() {
 
   // Let's start by deleting the index if it exists
   await client.indices.delete({
-    index: 'game-of-thrones',
+    index: 'shakespeare',
   }).then(function (resp) {
     console.log("Successfully deleted index!");
   }, function (err) {
@@ -27,7 +27,7 @@ async function run() {
   });
 
   // Specify the path to your JSON file
-  const filePath = 'shakespeare_8.0.json';
+  const filePath = 'google.json';
 
   try {
     // Read the contents of the JSON file
@@ -42,10 +42,10 @@ async function run() {
       console.log(item);
 
       await client.index({
-        index: 'shakespeare',
+        index: 'google',
         body: {
-          character: item.speaker,
-          quote: item.text_entry
+          title: item.title,
+          author: item.author
         }
       });
     }
@@ -55,14 +55,14 @@ async function run() {
 
   // Here we are forcing an index refresh, otherwise we will not
   // get any result in the subsequent search
-  await client.indices.refresh({ index: 'shakespeare' });
+  await client.indices.refresh({ index: 'google' });
 
   // Let's search!
   const result = await client.search({
-    index: 'shakespeare',
+    index: 'google',
     body: {
       query: {
-        match: { quote: 'winteTo be' }
+        match: { title: 'Attack on Titan: Volume 13' }
       }
     }
   });
