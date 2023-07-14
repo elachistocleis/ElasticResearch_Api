@@ -46,6 +46,7 @@ async function run() {
         body: {
           title: item.title,
           author: item.author
+          description: item.description
         }
       });
     }
