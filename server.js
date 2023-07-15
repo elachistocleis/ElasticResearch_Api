@@ -42,9 +42,12 @@ app.post('/search', async (req, res) => {
           });
           
 
-        const hits = response.hits.hits;
-        const results = hits.map(hit => hit._source);
-        res.send(results);
+          const hits = response.hits.hits;
+          const results = hits.map(hit => {
+            const { title, author, description, year_published } = hit._source;
+            return { title, author, description, year_published };
+          });
+          res.send(results);
     } catch (error) {
         console.error('Error occurred during the search:', error);
         res.status(500).send('An error occurred during the search');
