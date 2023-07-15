@@ -1,7 +1,6 @@
 'use strict'
 const { env } = require('dotenv').config()
 const fs = require('fs')
-
 const { Client } = require('@elastic/elasticsearch')
 const client = new Client({
   node: process.env.elastic_server,
@@ -13,7 +12,38 @@ const client = new Client({
     ca: fs.readFileSync('./http_ca.crt'),
     rejectUnauthorized: false
   }
-})
+});
+
+async function deleteRecord(id) {
+  try {
+    await client.delete({
+      index: 'google',
+      id: id
+    });
+    console.log('Record deleted successfully');
+    await runSearch(); // Refresh the search results
+  } catch (err) {
+    console.error('Error occurred during the delete:', err);
+  }
+}
+
+async function runSearch() {
+  try {
+    const result = await client.search({
+      index: 'google',
+      body: {
+        query: {
+          match: { title: 'Attack on Titan: Volume 13' }
+        },
+        _source: ['FIELD1', 'title', 'author', 'description', 'published_date']
+      }
+    });
+
+    console.log(result.hits.hits);
+  } catch (err) {
+    console.error('Error occurred during the search:', err);
+  }
+}
 
 async function run() {
 
