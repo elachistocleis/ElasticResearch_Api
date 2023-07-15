@@ -48,8 +48,6 @@ async function run() {
           author: item.author,
           description: item.description,
           published_date: item.published_date,
-          description: item.description, // Add the "description" field
-          published_date: item.published_date,
         }
       });
     }
