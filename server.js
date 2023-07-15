@@ -37,15 +37,15 @@ app.post('/search', async (req, res) => {
               query: {
                 match: { [field]: query }
               },
-              _source: ['title', 'author', 'description', 'published_date'] //we Specify the fields to retrieve
+              _source: ['FIELD1', 'title', 'author', 'description', 'published_date'] //we Specify the fields to retrieve
             }
           });
           
 
           const hits = response.hits.hits;
           const results = hits.map(hit => {
-            const { title, author, description, published_date } = hit._source;
-            return { title, author, description, published_date };
+            const { FIELD1, title, author, description, published_date } = hit._source;
+            return { FIELD1, title, author, description, published_date };
           });
           res.send(results);
     } catch (error) {
