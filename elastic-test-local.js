@@ -44,11 +44,11 @@ async function run() {
       await client.index({
         index: 'google',
         body: {
-          FIELD1: item.FIELD1,
+          FIELD1:item.FIELD1,
           title: item.title,
-          author: item.author,
-          description: item.description,
-          published_date: item.published_date,
+          author:item.author,
+          description:item.description,
+          published_date:item.published_date,
         }
       });
     }
