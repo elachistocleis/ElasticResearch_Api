@@ -44,6 +44,7 @@ async function run() {
       await client.index({
         index: 'google',
         body: {
+          FIELD1: item.FIELD1,
           title: item.title,
           author: item.author,
           description: item.description,
@@ -66,7 +67,7 @@ async function run() {
       query: {
         match: { title: 'Attack on Titan: Volume 13' }
       },
-      _source: ['title', 'author', 'description', 'published_date']
+      _source: ['FIELD1','title', 'author', 'description', 'published_date']
     }
   });
 
