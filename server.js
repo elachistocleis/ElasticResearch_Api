@@ -37,7 +37,7 @@ app.post('/search', async (req, res) => {
               query: {
                 match: { [field]: query }
               },
-              _source: ['title', 'author', 'description', 'published_date'] // Specify the fields to retrieve
+              _source: ['title', 'author', 'description', 'published_date'] //we Specify the fields to retrieve
             }
           });
           
