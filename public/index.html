@@ -33,6 +33,7 @@
                             headerRow.append($('<th>').text('Author'));
                             headerRow.append($('<th>').text('Description'));
                             headerRow.append($('<th>').text('Published Date'));
+                            headerRow.append($('<th>').text('Delete'));
                             table.append(headerRow);
 
                              // Add CSS style to the table
@@ -46,6 +47,7 @@
                                 row.append($('<td>').text(result.author).css('border', '1px solid black'));
                                 row.append($('<td>').text(result.description).css('border', '1px solid black'));
                                 row.append($('<td>').text(result.published_date).css('border', '1px solid black'));
+                                row.append($('<td>').html('<button onclick="deleteRecord(' + result.FIELD1 + ')">Delete</button>').css('border', '1px solid black'));
                                 table.append(row);
                             });
 
@@ -62,6 +64,23 @@
                 });
             });
         });
+
+        function deleteRecord(id) {
+            // Perform delete request
+            $.ajax({
+                url: '/delete',
+                type: 'POST',
+                data: { id: id },
+                success: function (response) {
+                    console.log('Record deleted successfully');
+                    // Refresh the search results
+                    $('#searchForm').submit();
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error occurred during the delete:', error);
+                }
+            });
+        }
     </script>
 </head>
 
