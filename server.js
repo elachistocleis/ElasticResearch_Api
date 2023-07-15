@@ -44,8 +44,8 @@ app.post('/search', async (req, res) => {
 
           const hits = response.hits.hits;
           const results = hits.map(hit => {
-            const { title, author, description, year_published } = hit._source;
-            return { title, author, description, year_published };
+            const { title, author, description, published_date } = hit._source;
+            return { title, author, description, published_date };
           });
           res.send(results);
     } catch (error) {
