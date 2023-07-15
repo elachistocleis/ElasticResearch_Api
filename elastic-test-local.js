@@ -49,7 +49,7 @@ async function run() {
           description: item.description,
           published_date: item.published_date,
           description: item.description, // Add the "description" field
-          published_date: item.year_published,
+          published_date: item.published_date,
         }
       });
     }
@@ -68,7 +68,7 @@ async function run() {
       query: {
         match: { title: 'Attack on Titan: Volume 13' }
       },
-      _source: ['title', 'author', 'description', 'year_published']
+      _source: ['title', 'author', 'description', 'published_date']
     }
   });
 

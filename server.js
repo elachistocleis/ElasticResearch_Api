@@ -33,12 +33,14 @@ app.post('/search', async (req, res) => {
     try {
         const response = await client.search({
             index: 'google',
-            query: {
-                match: {
-                    [field]: query
-                }
+            body: {
+              query: {
+                match: { [field]: query }
+              },
+              _source: ['title', 'author', 'description', 'published_date'] // Specify the fields to retrieve
             }
-        });
+          });
+          
 
         const hits = response.hits.hits;
         const results = hits.map(hit => hit._source);
