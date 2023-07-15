@@ -28,6 +28,7 @@
                             // Create table header
                             var table = $('<table>');
                             var headerRow = $('<tr>');
+                            headerRow.append($('<th>').text('ID'));
                             headerRow.append($('<th>').text('Title'));
                             headerRow.append($('<th>').text('Author'));
                             headerRow.append($('<th>').text('Description'));
@@ -39,7 +40,8 @@
 
                             // Create table rows for each result
                             data.forEach(function (result) {
-                                var row = $('<tr>');
+                                var row = $('<tr>'); 
+                                row.append($('<td>').text(result.FIELD1).css('border', '1px solid black'));
                                 row.append($('<td>').text(result.title).css('border', '1px solid black'));
                                 row.append($('<td>').text(result.author).css('border', '1px solid black'));
                                 row.append($('<td>').text(result.description).css('border', '1px solid black'));
