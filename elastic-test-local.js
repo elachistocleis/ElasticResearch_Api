@@ -67,7 +67,8 @@ async function run() {
     body: {
       query: {
         match: { title: 'Attack on Titan: Volume 13' }
-      }
+      },
+      _source: ['title', 'author', 'description', 'year_published']
     }
   });
 
