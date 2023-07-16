@@ -60,7 +60,6 @@ app.post('/delete', async (req, res) => {
     try {
       await client.delete({
         index: 'google',
-        ID:id
       });
       res.sendStatus(200);
     } catch (error) {
