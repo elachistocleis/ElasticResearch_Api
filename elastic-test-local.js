@@ -18,7 +18,7 @@ async function deleteRecord(id) {
   try {
     await client.delete({
       index: 'google',
-      FIELD1:FIELD1
+      ID:id
     });
     console.log('Record deleted successfully');
     await runSearch(); // Refresh the search results
