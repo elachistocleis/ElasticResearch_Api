@@ -14,8 +14,6 @@ const client = new Client({
   }
 });
 
-
-
 async function deleteRecord(id) {
   try {
     await client.delete({
