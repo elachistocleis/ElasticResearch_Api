@@ -55,12 +55,12 @@ app.post('/search', async (req, res) => {
 });
 
 app.post('/delete', async (req, res) => {
-    const { id } = req.body;
+    const { FIELD1 } = req.body;
   
     try {
       await client.delete({
         index: 'google',
-        id: id
+        FIELD1: FIELD1
       });
       res.sendStatus(200);
     } catch (error) {
