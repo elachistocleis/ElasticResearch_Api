@@ -1,7 +1,7 @@
 'use strict'
-const { env } = require('dotenv').config()
-const fs = require('fs')
-const { Client } = require('@elastic/elasticsearch')
+const { env } = require('dotenv').config();
+const fs = require('fs');
+const { Client } = require('@elastic/elasticsearch');
 const client = new Client({
   node: process.env.elastic_server,
   auth: {
@@ -13,6 +13,8 @@ const client = new Client({
     rejectUnauthorized: false
   }
 });
+
+
 
 async function deleteRecord(id) {
   try {
