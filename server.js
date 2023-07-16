@@ -1,12 +1,12 @@
 'use strict'
-const { env } = require('dotenv').config()
+const { env } = require('dotenv').config();
 
-const express = require('express')
+const express = require('express');
 const bodyParser = require('body-parser');
 
 const fs = require('fs')
 
-const { Client } = require('@elastic/elasticsearch')
+const { Client } = require('@elastic/elasticsearch');
 const client = new Client({
     node: process.env.elastic_server,
     auth: {
