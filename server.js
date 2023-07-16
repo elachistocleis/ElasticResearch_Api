@@ -54,6 +54,21 @@ app.post('/search', async (req, res) => {
     }
 });
 
+app.post('/delete', async (req, res) => {
+    const { id } = req.body;
+  
+    try {
+      await client.delete({
+        index: 'google',
+        id: id
+      });
+      res.sendStatus(200);
+    } catch (error) {
+      console.error('Error occurred during the delete:', error);
+      res.status(500).send('An error occurred during the delete');
+    }
+  });
+
 const server = app.listen(5678); //start the server
 console.log('Server is running...');
 console.log('http://localhost:' + server.address().port)
