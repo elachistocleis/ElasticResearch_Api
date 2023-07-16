@@ -14,19 +14,6 @@ const client = new Client({
   }
 });
 
-async function deleteRecord(id) {
-  try {
-    await client.delete({
-      index: 'google',
-      ID:id
-    });
-    console.log('Record deleted successfully');
-    await runSearch(); // Refresh the search results
-  } catch (err) {
-    console.error('Error occurred during the delete:', err);
-  }
-}
-
 async function runSearch() {
   try {
     const result = await client.search({
