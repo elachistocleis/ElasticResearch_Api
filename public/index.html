@@ -65,12 +65,12 @@
             });
         });
 
-        function deleteRecord(id) {
+        function deleteRecord(FIELD1) {
             // Perform delete request
             $.ajax({
                 url: '/delete',
                 type: 'POST',
-                data: { id: FIELD1 },
+                data: { FIELD1: FIELD1 },
                 success: function (response) {
                     console.log('Record deleted successfully');
                     // Refresh the search results
