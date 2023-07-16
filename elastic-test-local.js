@@ -90,6 +90,8 @@ async function run() {
   // get any result in the subsequent search
   await client.indices.refresh({ index: 'google' });
 
+  await runSearch(); // Perform the initial search
+
   // Let's search!
   const result = await client.search({
     index: 'google',
