@@ -32,7 +32,7 @@ app.post('/search', async (req, res) => {
 
     try {
         const response = await client.search({
-            index: 'google',
+            index:'google',
             body: {
               query: {
                 match: { [field]: query }
